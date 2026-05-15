@@ -4,9 +4,12 @@
   "description": "",
   "author": "",
   "private": true,
+  "engines": {
+    "node": ">=22.0.0"
+  },
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npx nest build",
+    "build": "npx prisma generate && nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",

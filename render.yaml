@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: fullstack-prueba-backend
+    runtime: node
+    plan: free
+    buildCommand: cd backend && npm install && npm run build
+    startCommand: cd backend && npm run start:prod
+    envVars:
+      - key: NODE_VERSION
+        value: 22.14.0
+      - key: DATABASE_URL
+        fromDatabase:
+          name: fullstack-prueba-db
+          property: connectionString
+      - key: JWT_SECRET
+        generateValue: true
+
+databases:
+  - name: fullstack-prueba-db
+    plan: free
+    databaseName: fullstack_prueba
+    user: admin
