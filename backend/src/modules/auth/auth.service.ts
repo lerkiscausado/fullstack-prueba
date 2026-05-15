@@ -1,4 +1,8 @@
-import { Injectable, ConflictException, UnauthorizedException } from '@nestjs/common';
+import {
+  Injectable,
+  ConflictException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import * as bcrypt from 'bcrypt';
 import { PrismaService } from '../../prisma/prisma.service';
@@ -33,8 +37,13 @@ export class AuthService {
     });
 
     // Return user without password
-    const { password: _, ...result } = user;
-    return result;
+    return {
+      id: user.id,
+      nickname: user.nickname,
+      rol: user.rol,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+    };
   }
 
   /** Inicio de sesión y generación de token */

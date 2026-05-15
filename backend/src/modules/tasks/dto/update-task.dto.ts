@@ -1,4 +1,10 @@
-import { IsString, IsOptional, IsEnum, IsDateString, MinLength } from 'class-validator';
+import {
+  IsString,
+  IsOptional,
+  IsEnum,
+  IsDateString,
+  MinLength,
+} from 'class-validator';
 import { TaskStatus, TaskPriority } from '@prisma/client';
 import { ApiProperty } from '@nestjs/swagger';
 
@@ -16,12 +22,16 @@ export class UpdateTaskDto {
 
   @ApiProperty({ enum: TaskStatus, required: false })
   @IsOptional()
-  @IsEnum(TaskStatus, { message: 'Estado inválido. Valores: TODO, IN_PROGRESS, DONE' })
+  @IsEnum(TaskStatus, {
+    message: 'Estado inválido. Valores: TODO, IN_PROGRESS, DONE',
+  })
   status?: TaskStatus;
 
   @ApiProperty({ enum: TaskPriority, required: false })
   @IsOptional()
-  @IsEnum(TaskPriority, { message: 'Prioridad inválida. Valores: LOW, MEDIUM, HIGH' })
+  @IsEnum(TaskPriority, {
+    message: 'Prioridad inválida. Valores: LOW, MEDIUM, HIGH',
+  })
   priority?: TaskPriority;
 
   @ApiProperty({ example: '2026-12-31T23:59:59Z', required: false })

@@ -23,7 +23,9 @@ async function bootstrap() {
   // Configuración de Swagger
   const config = new DocumentBuilder()
     .setTitle('Task Management API')
-    .setDescription('API para la gestión de proyectos y tareas con autenticación JWT')
+    .setDescription(
+      'API para la gestión de proyectos y tareas con autenticación JWT',
+    )
     .setVersion('1.0')
     .addBearerAuth() // Habilita autenticación por token en la UI
     .build();
@@ -33,4 +35,6 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT ?? 3000);
 }
-bootstrap();
+bootstrap().catch((err) => {
+  console.error('Error starting server:', err);
+});

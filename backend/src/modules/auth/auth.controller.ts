@@ -12,7 +12,10 @@ export class AuthController {
   /** Endpoint para registrar usuarios */
   @Post('register')
   register(@Body() registerDto: RegisterDto) {
-    return this.authService.register(registerDto.nickname, registerDto.password);
+    return this.authService.register(
+      registerDto.nickname,
+      registerDto.password,
+    );
   }
 
   /** Endpoint para iniciar sesión */
