@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000",
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://ec2-3-22-114-176.us-east-2.compute.amazonaws.com:3000",
 });
 
 // Interceptor para añadir el token a las peticiones
