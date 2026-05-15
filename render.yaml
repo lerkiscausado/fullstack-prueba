@@ -15,6 +15,16 @@ services:
       - key: JWT_SECRET
         generateValue: true
 
+  - type: web
+    name: fullstack-prueba-frontend
+    runtime: node
+    plan: free
+    buildCommand: cd frontend && npm install && npm run build
+    startCommand: cd frontend && npm run start
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://fullstack-prueba-backend.onrender.com
+
 databases:
   - name: fullstack-prueba-db
     plan: free
